@@ -1,9 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="mx-8">
+    <div class="shadow-lg rounded-lg overflow-hidden m-10 border-2 p-5">
+        <div>
+        <section class="mx-8">
         <h1 class="text-3xl mb-6">
-            Edit post
+            แก้ไขคำร้องเรียน
         </h1>
 
         <form action="{{ route('posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
@@ -11,8 +13,8 @@
             @method('PUT')
 
             <div class="relative z-0 mb-6 w-full group">
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Post Title
+                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-bold">
+                    Title : 
                 </label>
                 @if ($errors->has('title'))
                     <p class="text-red-500">
@@ -26,28 +28,27 @@
             </div>
 
             <div class="container">
-                <label class="form-label text-green-400" style="font-weight: bold;" for="tags">Tags</label>
-                <select class="form-input" style="color: #41A7A5" aria-label="Default select example" id="tags" name="tags" required >
+                <label class="form-label text-black" style="font-weight: bold;" for="tags">หมวดหมู่ : </label>
+                <select class="form-input" aria-label="Default select example" id="tags" name="tags" required >
                     <option selected disabled hidden value="">-------Select Tags-------</option>
                     @foreach (\App\Models\Tag::all() as $tag)
                         <option value="{{$tag->id}}" id="tags" name="tags" >{{$tag->name}}</option>
                     @endforeach
                 </select>
-            </div>
 
-            <div class="container">
-                <label class="form-label text-green-400" style="font-weight: bold;" for="organizations">Tags</label>
-                <select class="form-input" style="color: #41A7A5" aria-label="Default select example" id="organizations" name="organizations" required >
+                <label class="form-label text-black" style="font-weight: bold;" for="organizations">องค์กร : </label>
+                <select class="form-input" aria-label="Default select example" id="organizations" name="organizations" required >
                     <option selected disabled hidden value="">-------Select Tags-------</option>
                     @foreach (\App\Models\OrganizationTag::all() as $organizationTag)
                         <option value="{{$organizationTag->id}}" id="tags" name="tags" >{{$organizationTag->name}}</option>
                     @endforeach
                 </select>
             </div>
+
                 @can('updateStatus',$post)
                 <div class="container">
-                    <label class="form-label text-green-400" style="font-weight: bold;" for="progression">Tags</label>
-                    <select class="form-input" style="color: #41A7A5" aria-label="Default select example" id="progression" name="progression" required >
+                    <label class="form-label text-black" style="font-weight: bold;" for="progression">สถานะ : </label>
+                    <select class="form-input" aria-label="Default select example" id="progression" name="progression" required >
                         <option selected disabled hidden value="">-------Select Tags-------</option>
                         <option value="ยื่นคำร้อง/ปัญหา" id="progression" name="progression" >ยื่นคำร้อง/ปัญหา</option>
                         <option value="รับคำร้อง/ปัญหา" id="progression" name="progression" >รับคำร้อง/ปัญหา</option>
@@ -58,8 +59,8 @@
                 @endcan
 
             <div class="relative z-0 mb-6 w-full group">
-                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                    Post Description
+                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400 font-bold">
+                    Description : 
                 </label>
                 @if ($errors->has('description'))
                     <p class="text-red-500">
@@ -80,14 +81,19 @@
 
 
             <div>
-                <button class="app-button" type="submit">Edit</button>
+                <button class="app-button-orange" type="submit">Edit</button>
             </div>
 
         </form>
     </section>
+        </div>
+    </div>
+    
 
-    <section class="mx-8 mt-16">
-                    <h3 class="text-red-600 mb-4 text-2xl">
+    <div class="shadow-lg rounded-lg overflow-hidden m-10 border-2 p-5">
+        <div>
+        <section class="mx-8 mt-5">
+                    <h3 class="text-red-600 mb-4 text-2xl font-bold">
                         Delete Images
                         <p class="text-gray-800 text-xl">
                             Once you delete images, there is no going back. Please be certain.
@@ -95,33 +101,32 @@
                     </h3>
 
 
+                        <form action="{{ route('posts.images.deleteImage',['post' => $post->id]) }}" method="post">
+                            @csrf
+                            <div class="container">
+                                <label class="form-label text-black" style="font-weight: bold;" for="imageNames">รูปที่จะลบ : </label>
+                                <select class="form-input" aria-label="Default select example" id="imageNames" name="imageNames" required >
+                                    <option selected disabled hidden value="">-------Select Image-------</option>
+                                    @foreach($post->images as $image)
+                                        <option value="{{$image->title}}" id="imageNames" name="imageNames" >{{$image->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                    <form action="{{ route('posts.images.deleteImage',['post' => $post->id]) }}" method="post">
-                        @csrf
-                        <div class="container">
-                            <label class="form-label text-green-400" style="font-weight: bold;" for="imageNames">Tags</label>
-                            <select class="form-input" style="color: #41A7A5" aria-label="Default select example" id="imageNames" name="imageNames" required >
-                                <option selected disabled hidden value="">-------Select Image-------</option>
-                                @foreach($post->images as $image)
-                                    <option value="{{$image->title}}" id="imageNames" name="imageNames" >{{$image->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div>
-                            <button class="app-button red" type="submit">DELETE IMAGE</button>
-                        </div>
-                    </form>
+                            <div class="py-5">
+                                <button class="app-button-red" type="submit">DELETE IMAGE</button>
+                            </div>
+                        </form>
 
-                    <form action="{{ route('posts.images.deleteAll',['post' => $post->id]) }}" method="post">
-                        @csrf
-                        <div>
-                            <button class="app-button red" type="submit">DELETE ALL IMAGES</button>
-                        </div>
-                    </form>
+                        <form action="{{ route('posts.images.deleteAll',['post' => $post->id]) }}" method="post">
+                            @csrf
+                            <div>
+                                <button class="app-button-red" type="submit">DELETE ALL IMAGES</button>
+                            </div>
+                        </form>
 
 
     </section>
-
 
 
     @can('delete', $post)
@@ -131,14 +136,14 @@
                     <div class="w-full border-b border-red-300"></div>
                 </div>
                 <div class="relative flex justify-center">
-                    <span class="bg-white px-4 text-sm text-red-500">Danger Zone</span>
+                    <span class="bg-white px-4 text-sm text-red-500 font-bold">Danger Zone</span>
                 </div>
             </div>
 
 
 
 
-                <h3 class="text-red-600 mb-4 text-2xl">
+                <h3 class="text-red-600 mb-4 text-2xl font-bold">
                     Delete this Post
                     <p class="text-gray-800 text-xl">
                         Once you delete a post, there is no going back. Please be certain.
@@ -149,17 +154,21 @@
                     @csrf
                     @method('DELETE')
                     <div class="relative z-0 mb-6 w-full group">
-                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Post Title to Delete
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-bold">
+                            Title to delete : 
                         </label>
                         <input type="text" name="title" id="title"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="" required>
                     </div>
-                    <button class="app-button red" type="submit">DELETE</button>
+                    <button class="app-button-red" type="submit">DELETE</button>
                 </form>
             </div>
         </section>
     @endcan
+        </div>
+    </div>
+
+    
 
 @endsection
