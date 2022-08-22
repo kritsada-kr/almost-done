@@ -188,6 +188,7 @@
             </div>
 
             <div class="shadow-lg rounded-lg overflow-hidden p-5 border-2">
+                <h1 class="text-3xl mb-2">{{ $post->comments->count() }} Comments</h1>
                 <form action="{{ route('posts.comments.store', ['post' => $post->id]) }}" method="post">
                     @csrf
                     <div>
@@ -200,7 +201,6 @@
 
                 </form>
 
-                <h1 class="text-3xl mb-2">{{ $post->comments->count() }} Comments</h1>
 
                 @foreach($post->comments->sortByDesc('created_at') as $comment)
                     <div class="mb-2 block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
