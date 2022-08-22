@@ -37,7 +37,7 @@
                         labels: <?php echo json_encode($labels) ?>,
                         datasets: [
                             {
-                                label: "Total post",
+                                label: "โพสต์ทั้งหมด",
                                 backgroundColor: "orange",
                                 borderColor: "orange",
                                 data: <?php echo json_encode($counts); ?>,
@@ -48,7 +48,13 @@
                     const configLineChart = {
                         type: "line",
                         data,
-                        options: {},
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        },
                     };
 
                     var chartLine = new Chart(
@@ -60,17 +66,14 @@
             <!-- Chart pie -->
                 <script>
                 const dataPie = {
-                    labels: ["JavaScript", "Python", "Ruby","JavaScript", "Python", "Ruby"],
+                    labels: ["ยื่นคำร้อง", "รับคำร้อง", "กำลังดำเนินการ","เสร็จสมบูรณ์"],
                     datasets: [
                     {
-                        label: "My First Dataset",
-                        data: [300, 50, 100, 50 ,100 ,200],
-                        backgroundColor: ["rgba(91, 235, 175, 0.6)" ,
+                        data: <?php echo json_encode($progesses); ?>,
+                        backgroundColor: ["rgba(111, 227, 247, 0.6)",
                         "rgba(230, 129, 184, 0.6)" , 
-                        "rgba(255, 182, 56, 0.6)", 
-                        "rgba(111, 227, 247, 0.6)", 
-                        "rgba(237, 59, 92, 0.6)", 
-                        "rgba(207, 95, 227, 0.6)"
+                        "rgba(255, 182, 56, 0.6)",
+                        "rgba(91, 235, 175, 0.6)"
                     ],
                         hoverOffset: 4,
                     },
@@ -80,7 +83,14 @@
                 const configPie = {
                     type: "pie",
                     data: dataPie,
-                    options: {},
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'สถานะเดือนนี้'
+                            }
+                        }
+                    },
                 };
                 var chartBar = new Chart(document.getElementById("chartPie"), configPie);
                 </script>
@@ -91,8 +101,6 @@
                     labels: <?php echo json_encode($labels) ?>,
                     datasets: [
                     {
-                        label: "My First dataset",
-                        fill: true,
                         backgroundColor: ["rgba(91, 235, 175, 0.6)" ,
                         "rgba(230, 129, 184, 0.6)" , 
                         "rgba(255, 182, 56, 0.6)", 
@@ -105,7 +113,7 @@
                         pointBorderColor: "#fff",
                         pointHoverBackgroundColor: "#fff",
                         pointHoverBorderColor: "rgb(133, 105, 241)",
-                        data: <?php echo json_encode($counts); ?>,
+                        data: <?php echo json_encode($count_per_month); ?>,
                     },
                     ],
                 };
@@ -113,7 +121,18 @@
                 const configBarChart = {
                     type: "bar",
                     data: dataBarChart,
-                    options: {},
+                    options: {
+                        plugins: {
+                            legend: {
+                            display: false
+                            }
+                            ,
+                            title: {
+                                display: true,
+                                text: 'โพสต์เดือนนี้'
+                            }
+                        }
+                    },
                 };
 
                 var chartBar = new Chart(
