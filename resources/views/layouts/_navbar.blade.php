@@ -46,7 +46,7 @@
 
                     <li>
                         <form action="/search" method="get" class="pt-4">
-                            <input class="normal-field" name="search" type="search" placeholder="Search ..">
+                            <input class="normal-field" name="search" type="search" placeholder="ค้นหาเรื่องร้องเรียน">
                                 <button class="app-button-orange" type="submit">Search</button>
                         </form>
                     </li>

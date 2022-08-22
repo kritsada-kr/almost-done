@@ -15,7 +15,7 @@
                     </h4>
 
                     @if($post->status)
-                        <p>
+                        <p class="group-hover:text-white">
                             By anonymous
                         </p>
                     @else

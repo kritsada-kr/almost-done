@@ -1,15 +1,16 @@
 @extends('layouts.main')
 
 @section('content')
+<div class="shadow-lg rounded-lg overflow-hidden m-5 border-2">
     <section class="mx-8">
         <h1 class="text-3xl mx-4 mt-6">
-            All Tags
+            องค์กรทั้งหมด : 
         </h1>
-        <div class="my-1 px-8 py-2 flex flex-wrap justify-between space-y-6">
+        <div class="my-1 px-8 py-2 grid gap-4">
             @foreach($organizationTags as $organizationTag)
                 <a href="{{ route('organizationTags.show', ['organizationTag' => $organizationTag->name]) }}"
-                   class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                   class="group block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-orange-400">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white">
                         {{ $organizationTag->name }}
                     </h5>
                     <p class="bg-orange-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
@@ -22,7 +23,7 @@
             @endforeach
         </div>
     </section>
-
+</div>
 
 
 @endsection
