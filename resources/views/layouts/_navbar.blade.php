@@ -55,7 +55,7 @@
                 </div>
 
 
-                <div class="flex justify-end pl-36 pt-4 pr-2">
+                <div class="flex justify-end pt-4 absolute right-0">
                     <li>
                         <button id="dropdownDefault" data-dropdown-toggle="dropdown" type="button"
                             class="hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
