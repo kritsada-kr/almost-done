@@ -1525,6 +1525,15 @@ input:checked + .toggle-bg {
 .w-1\/2 {
   width: 50%;
 }
+.w-24 {
+  width: 6rem;
+}
+.w-36 {
+  width: 9rem;
+}
+.w-10 {
+  width: 2.5rem;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -2000,6 +2009,9 @@ input:checked + .toggle-bg {
 }
 .pt-5 {
   padding-top: 1.25rem;
+}
+.pl-5 {
+  padding-left: 1.25rem;
 }
 .text-center {
   text-align: center;

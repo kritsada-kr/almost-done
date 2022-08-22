@@ -38,18 +38,21 @@
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
-            </div>
 
-            <div class="flex items-center mt-4">
+                <div class="pl-1">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 w-48" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+                </div>
 
-                <x-button class="app-button-orange ml-40">
-                    {{ __('Log in') }}
-                </x-button>
+            </div>
+
+            <div class="flex justify-start mt-4">
+                    <x-button class="app-button-orange ">
+                        {{ __('Log in') }}
+                    </x-button>
             </div>
         </form>
     </x-auth-card>
