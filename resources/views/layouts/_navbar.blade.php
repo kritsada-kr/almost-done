@@ -7,7 +7,7 @@
         </div>
 
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white ">
+            <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                 @auth
                 <div class="flex md:flex-row md:space-x-12">
                 <li>
@@ -55,7 +55,7 @@
                 </div>
 
 
-                <div class="flex  justify-end pl-36 pt-4">
+                <div class="flex justify-end pl-36 pt-4 pr-2">
                     <li>
                         <button id="dropdownDefault" data-dropdown-toggle="dropdown" type="button"
                             class="hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
