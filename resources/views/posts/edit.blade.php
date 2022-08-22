@@ -43,10 +43,9 @@
                         <option value="{{$organizationTag->id}}" id="tags" name="tags" >{{$organizationTag->name}}</option>
                     @endforeach
                 </select>
-            </div>
+            
 
                 @can('updateStatus',$post)
-                <div class="container">
                     <label class="form-label text-black" style="font-weight: bold;" for="progression">สถานะ : </label>
                     <select class="form-input" aria-label="Default select example" id="progression" name="progression" required >
                         <option selected disabled hidden value="">-------Select Tags-------</option>
@@ -55,8 +54,8 @@
                         <option value="กำลังดำเนินการ" id="progression" name="progression" >กำลังดำเนินการ</option>
                         <option value="เสร็จสมบูรณ์" id="progression" name="progression" >เสร็จสมบูรณ์</option>
                     </select>
-                </div>
                 @endcan
+            </div>
 
             <div class="relative z-0 mb-6 w-full group">
                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400 font-bold">
